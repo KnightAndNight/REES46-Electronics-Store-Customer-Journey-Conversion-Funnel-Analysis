@@ -1,7 +1,5 @@
 # REES46 Electronics Store Customer Journey & Conversion Funnel Analysis
 
-# Online Electronics Store Customer Journey & Conversion Funnel Analysis
-
 > **Project status:** WORK IN PROGRESS
 
 ## Project Overview
@@ -22,29 +20,27 @@ Where do users drop off in the product conversion funnel, and how does funnel pe
 
 The project uses the [eCommerce Events History in Electronics Store](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-electronics-store) dataset published on Kaggle.
 
-The raw dataset contains approximately 885,000 product events, including:
+The raw dataset contains 885,129 event records and nine columns:
 
-- Product views
-- Cart additions
-- Purchases
-- Product categories and brands
-- Product prices
-- User and session identifiers
+| Column | Description |
+|---|---|
+| `event_time` | Date and time when the event occurred |
+| `event_type` | User action recorded as `view`, `cart`, or `purchase` |
+| `product_id` | Product identifier |
+| `category_id` | Product category identifier |
+| `category_code` | Readable product category path, where available |
+| `brand` | Product brand, where available |
+| `price` | Product price in unspecified source currency units |
+| `user_id` | Anonymised user identifier |
+| `user_session` | Temporary user-session identifier |
 
 ## Tools
 
-- SQL, SQLite, DBeaver
+SQL, SQLite, DBeaver
 
 ## Data Preparation
 
-The data preparation process included:
-
-- Checking row counts, exact duplicates, and missing values
-- Removing 655 duplicated event rows
-- Excluding events without a valid session ID from session-based analysis
-- Creating a cleaned event view
-- Grouping events into 633,790 session-product journeys
-- Converting event activity into consistent `viewed`, `carted`, and `purchased` funnel stages
+Data quality was assessed by checking row counts, exact duplicates, missing values, and key-field completeness. After removing 655 duplicated rows and excluding 162 events without valid session IDs, 884,312 event records remained available for session-based analysis. These events were grouped into 633,790 unique session-product journeys using `user_session` and `product_id`.
 
 ## Funnel Definition
 
