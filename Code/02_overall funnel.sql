@@ -30,19 +30,19 @@ GROUP BY
     product_id;
 
 
--- 2. Examine the observed journey paths
--- This diagnostic identifies both the standard view-cart-purchase path
--- and non-standard paths caused by unrecorded or skipped funnel stages.
+-- 2. Examine observed journey paths
+-- This identifies both the standard view-cart-purchase path and
+-- non-standard paths caused by unrecorded or skipped funnel stages.
 
 SELECT
     CASE WHEN view_count > 0
-         THEN 1 ELSE 0 END AS has_view,
+         THEN 1 ELSE 0 END AS viewed,
 
     CASE WHEN cart_count > 0
-         THEN 1 ELSE 0 END AS has_cart,
+         THEN 1 ELSE 0 END AS carted,
 
     CASE WHEN purchase_count > 0
-         THEN 1 ELSE 0 END AS has_purchase,
+         THEN 1 ELSE 0 END AS purchased,
 
     COUNT(*) AS journey_count
 
@@ -59,7 +59,7 @@ ORDER BY
     purchased DESC;
 
 
--- 3. Calculate the overall conversion funnel
+-- 3. Define and calculate conversion funnel
 -- Funnel stages are cumulative: carted journeys must contain both view and
 -- cart events, while purchased journeys must contain all three event types.
 
@@ -88,19 +88,10 @@ SELECT
     carted_journeys,
     purchased_journeys,
 
-    ROUND(
-        100.0 * carted_journeys / viewed_journeys,
-        2
-    ) AS view_to_cart_rate,
+    ROUND(100.0 * carted_journeys / viewed_journeys, 2) AS view_to_cart_rate,
 
-    ROUND(
-        100.0 * purchased_journeys / carted_journeys,
-        2
-    ) AS cart_to_purchase_rate,
+    ROUND(100.0 * purchased_journeys / carted_journeys, 2) AS cart_to_purchase_rate,
 
-    ROUND(
-        100.0 * purchased_journeys / viewed_journeys,
-        2
-    ) AS view_to_purchase_rate
+    ROUND(100.0 * purchased_journeys / viewed_journeys, 2) AS full_conversion_rate
 
 FROM funnel_counts;
