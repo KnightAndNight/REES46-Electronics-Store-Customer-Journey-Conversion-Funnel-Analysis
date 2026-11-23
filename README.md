@@ -4,9 +4,15 @@
 
 ## Project Overview
 
-This SQL project analyses user behaviour using dataset from REES46 online electronics store to identify where customers drop off between product viewing, cart addition, and purchase.
+This SQL project analyses user behaviour using an e-commerce event dataset provided by REES46 to identify where customers drop off between product viewing, cart addition, and purchase.
 
 Rather than treating every event as a separate funnel observation, the analysis groups events into session-product journeys using `user_session` and `product_id`. Funnel performance will be compared across product categories, price bands, and brands.
+
+## Repository Structure
+
+- [`01_data quality .sql`](Code/01_data%20quality.sql) — data-quality assessment and duplicate removal
+- [`02_overall funnel.sql`](Code/02_overall%20funnel.sql) — session-product journey construction and overall funnel analysis
+- `raw data/archive.zip` — source event dataset
 
 ## Business Question
 
@@ -51,6 +57,24 @@ Each journey represents one product within one user session.
 - **Purchased:** The journey contains view, cart, and purchase events
 
 Repeated events within the same journey do not count as separate funnel observations.
+
+## Preliminary Overall Funnel Results
+
+The analysis identified 633,790 session-product journeys. The primary funnel was defined cumulatively, with each stage requiring the preceding stages to be observed.
+
+| Funnel stage | Journeys | Conversion from previous stage |
+|---|---:|---:|
+| Viewed | 631,213 | — |
+| Carted | 48,977 | 7.76% |
+| Purchased | 22,972 | 46.90% |
+
+The full-funnel conversion rate was **3.64%**.
+
+The largest observed drop-off occurred between View and Cart, with only 7.76% of viewed journeys progressing to the cart stage. Among journeys reaching the cart stage, 46.90% completed the standard purchase path.
+
+### Non-standard Journey Paths
+
+Of the 633,790 journeys, 4,239 (0.67%) contained non-standard event combinations. These journeys were retained in the path analysis but excluded from the cumulative standard-funnel metrics where the required intermediate stages were not observed.
 
 ## Analysis Plan
 
