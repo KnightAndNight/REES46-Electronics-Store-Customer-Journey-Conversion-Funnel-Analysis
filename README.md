@@ -4,9 +4,9 @@
 
 ## Project Overview
 
-This SQL project analyses user behaviour using an e-commerce event dataset provided by REES46 to identify where customers drop off between product viewing, cart addition, and purchase.
+This SQL project analyses user behaviour using an e-commerce event dataset provided by REES46 to identify where users drop off between product viewing, cart addition, and purchase.
 
-Rather than treating every event as a separate funnel observation, the analysis groups events into session-product journeys using `user_session` and `product_id`. Funnel performance will be compared across product categories, price bands, and brands.
+Events are grouped into session-product journeys using user_session and product_id. This prevents repeated interactions with the same product within one session from being counted as separate funnel observations. Funnel performance will be compared across product categories, price bands, and brands.
 
 ## Repository Structure
 
@@ -46,7 +46,7 @@ SQL, SQLite, DBeaver
 
 ## Data Preparation
 
-Data quality was assessed by checking row counts, exact duplicates, missing values, and key-field completeness. After removing 655 duplicated rows and excluding 162 events without valid session IDs, 884,312 event records remained available for session-based analysis. These events were grouped into 633,790 unique session-product journeys using `user_session` and `product_id`.
+Data quality check includes checking row counts, exact duplicates, missing values, and key-field completeness. After removing 655 duplicated rows and excluding 162 events without valid session IDs, 884,312 event records remained available for session-based analysis. These events were grouped into 633,790 unique session-product journeys using `user_session` and `product_id`.
 
 ## Funnel Definition
 
