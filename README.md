@@ -90,12 +90,11 @@ Category- and brand-level analyses are restricted to journeys with available lab
 
 ## Current Progress
 
-- [x] Data quality assessment
+- [x] Data quality check
 - [x] Exact duplicate removal
 - [x] Session-product journey creation
 - [x] Overall funnel structure
 - [x] Initial category-level aggregation
-- [x] Price-band definition
 - [ ] Category conversion-rate analysis
 - [x] Price-band funnel analysis
 - [ ] Brand funnel analysis
