@@ -13,6 +13,7 @@ Events are grouped into session-product journeys using user_session and product_
 - [`01_data quality.sql`](Code/01_data%20quality.sql) — data-quality assessment and duplicate removal
 - [`02_overall funnel.sql`](Code/02_overall%20funnel.sql) — session-product journey construction and overall funnel analysis
 - [`03_price band funnel.sql`](Code/03_price%20band%20funnel.sql) — conversion funnel analysis across seven price bands
+- [`04_product category funnel.sql`](Code/04_product%20category%20funnel.sql) — category funnel analysis and conversion-rate ranking
 - `raw data/archive.zip` — source event dataset
 
 ## Business Question
@@ -95,7 +96,7 @@ Category- and brand-level analyses are restricted to journeys with available lab
 - [x] Session-product journey creation
 - [x] Overall funnel structure
 - [x] Initial category-level aggregation
-- [ ] Category conversion-rate analysis
+- [x] Category conversion-rate analysis
 - [x] Price-band funnel analysis
 - [ ] Brand funnel analysis
 - [ ] Final findings and recommendations
