@@ -67,6 +67,6 @@ SELECT
 
     ROUND(100.0 * purchased_journeys / viewed_journeys, 2) AS full_conversion_rate
 
-FROM price_band_funnel;
+FROM price_band_funnel
 
-ORDER BY price_band	
+ORDER BY price_band;	
