@@ -10,8 +10,9 @@ Events are grouped into session-product journeys using user_session and product_
 
 ## Repository Structure
 
-- [`01_data quality .sql`](Code/01_data%20quality.sql) — data-quality assessment and duplicate removal
+- [`01_data quality.sql`](Code/01_data%20quality.sql) — data-quality assessment and duplicate removal
 - [`02_overall funnel.sql`](Code/02_overall%20funnel.sql) — session-product journey construction and overall funnel analysis
+- [`03_price band funnel.sql`](Code/03_price%20band%20funnel.sql) — conversion funnel analysis across seven price bands
 - `raw data/archive.zip` — source event dataset
 
 ## Business Question
@@ -58,7 +59,7 @@ Each journey represents one product within one user session.
 
 Repeated events within the same journey do not count as separate funnel observations.
 
-## Preliminary Overall Funnel Results
+## Overall Funnel Results
 
 The analysis identified 633,790 session-product journeys. The primary funnel was defined cumulatively, with each stage requiring the preceding stages to be observed.
 
@@ -89,14 +90,13 @@ Category- and brand-level analyses are restricted to journeys with available lab
 
 ## Current Progress
 
-- [x] Data quality assessment
+- [x] Data quality check
 - [x] Exact duplicate removal
 - [x] Session-product journey creation
 - [x] Overall funnel structure
 - [x] Initial category-level aggregation
-- [x] Price-band definition
 - [ ] Category conversion-rate analysis
-- [ ] Price-band funnel analysis
+- [x] Price-band funnel analysis
 - [ ] Brand funnel analysis
 - [ ] Final findings and recommendations
 
